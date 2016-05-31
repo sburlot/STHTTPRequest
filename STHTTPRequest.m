@@ -378,6 +378,7 @@ static STHTTPRequestCookiesStorage globalCookiesStoragePolicy = STHTTPRequestCoo
     [data appendData:[contentDisposition dataUsingEncoding:NSUTF8StringEncoding]];
     [data appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimeType] dataUsingEncoding:NSUTF8StringEncoding]];
     [data appendData:someData];
+    [data appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     
     return data;
 }
