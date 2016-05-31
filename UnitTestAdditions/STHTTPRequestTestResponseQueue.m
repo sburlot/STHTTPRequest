@@ -5,10 +5,12 @@ static STHTTPRequestTestResponseQueue *sharedInstance = nil;
 
 @implementation STHTTPRequestTestResponseQueue
 
-+ (STHTTPRequestTestResponseQueue *)sharedInstance {
-    if(sharedInstance == nil) {
-        sharedInstance = [[STHTTPRequestTestResponseQueue alloc] init];
-    }
++ (instancetype)sharedInstance {
+    static STHTTPRequestTestResponseQueue *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
     return sharedInstance;
 }
 
@@ -16,11 +18,6 @@ static STHTTPRequestTestResponseQueue *sharedInstance = nil;
     self = [super init];
     self.responses = [NSMutableArray array];
     return self;
-}
-
-- (void)dealloc {
-    [_responses release];
-    [super dealloc];
 }
 
 /**/
@@ -33,15 +30,14 @@ static STHTTPRequestTestResponseQueue *sharedInstance = nil;
 
 - (STHTTPRequestTestResponse *)dequeue {
     
-    NSAssert([_responses count] > 0, @"can't dequeue because queue is empty, count is %d", [_responses count]);
-
     if([_responses count] == 0) {
+        NSLog(@"Cannot dequeue response");
         return nil;
     }
     
     NSUInteger lastIndex = [_responses count] - 1;
     
-    STHTTPRequestTestResponse *response = [_responses objectAtIndex:lastIndex];
+    STHTTPRequestTestResponse *response = _responses[lastIndex];
     
     [_responses removeObjectAtIndex:lastIndex];
     

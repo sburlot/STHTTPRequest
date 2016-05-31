@@ -36,10 +36,13 @@ void Swizzle(Class c, SEL orig, SEL new) {
 
 - (void)unitTests_startAsynchronous {
     
-    NSAssert(self.completionBlock != nil, @"completionBlock needed");
     NSAssert(self.errorBlock != nil, @"errorBlock needed");
     
     STHTTPRequestTestResponse *tr = [[STHTTPRequestTestResponseQueue sharedInstance] dequeue];
+
+    if(tr == nil && self.downloadProgressBlock) {
+        return; // response may come later on
+    }
     
     NSAssert(tr.block != nil, @"block needed");
     
@@ -48,7 +51,11 @@ void Swizzle(Class c, SEL orig, SEL new) {
     BOOL success = self.responseStatus < 400;
     
     if(success) {
-        self.completionBlock(self.responseHeaders, self.responseString);
+        if(self.completionBlock) {
+            self.completionBlock(self.responseHeaders, self.responseString);
+        } else if(self.completionDataBlock) {
+            self.completionDataBlock(self.responseHeaders, self.responseData);
+        }
     } else {
         self.errorBlock(self.error);
     }
@@ -57,7 +64,11 @@ void Swizzle(Class c, SEL orig, SEL new) {
 - (NSString *)unitTests_startSynchronousWithError:(NSError **)error {
     
     STHTTPRequestTestResponse *tr = [[STHTTPRequestTestResponseQueue sharedInstance] dequeue];
-    
+
+    if(tr == nil && self.downloadProgressBlock) {
+        return nil; // response may come later on
+    }
+
     NSAssert(tr.block != nil, @"block needed");
     
     tr.block(self);
@@ -72,6 +83,20 @@ void Swizzle(Class c, SEL orig, SEL new) {
     }
     
     return self.responseString;
+}
+
+- (void)unitTests_addDownloadProgressData:(NSData *)data {
+
+    if (self.downloadProgressBlock == nil) return;
+
+    [self.responseData appendData:data];
+    
+    self.downloadProgressBlock(data, [self.responseData length], self.responseExpectedContentLength);
+}
+
+- (void)unitTests_addDownloadProgressUTF8String:(NSString *)s {
+    NSData *data = [s dataUsingEncoding:NSUTF8StringEncoding];
+    [self unitTests_addDownloadProgressData:data];
 }
 
 @end

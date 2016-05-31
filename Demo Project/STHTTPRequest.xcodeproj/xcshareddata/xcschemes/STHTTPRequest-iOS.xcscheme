@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0440"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,82 +14,61 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "03A07DAD15D5078300B2D5B6"
-               BuildableName = "STHTTPRequest.app"
-               BlueprintName = "STHTTPRequest"
+               BlueprintIdentifier = "AE45B7E81C881C6600BA0D1C"
+               BuildableName = "STHTTPRequest.framework"
+               BlueprintName = "STHTTPRequest-iOS"
                ReferencedContainer = "container:STHTTPRequest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "03A07DCE15D5078300B2D5B6"
-               BuildableName = "STHTTPRequestTests.octest"
-               BlueprintName = "STHTTPRequestTests"
-               ReferencedContainer = "container:STHTTPRequest.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "03A07DAD15D5078300B2D5B6"
-            BuildableName = "STHTTPRequest.app"
-            BlueprintName = "STHTTPRequest"
-            ReferencedContainer = "container:STHTTPRequest.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "03A07DAD15D5078300B2D5B6"
-            BuildableName = "STHTTPRequest.app"
-            BlueprintName = "STHTTPRequest"
+            BlueprintIdentifier = "AE45B7E81C881C6600BA0D1C"
+            BuildableName = "STHTTPRequest.framework"
+            BlueprintName = "STHTTPRequest-iOS"
             ReferencedContainer = "container:STHTTPRequest.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "03A07DAD15D5078300B2D5B6"
-            BuildableName = "STHTTPRequest.app"
-            BlueprintName = "STHTTPRequest"
+            BlueprintIdentifier = "AE45B7E81C881C6600BA0D1C"
+            BuildableName = "STHTTPRequest.framework"
+            BlueprintName = "STHTTPRequest-iOS"
             ReferencedContainer = "container:STHTTPRequest.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
